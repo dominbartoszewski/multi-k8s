@@ -14,7 +14,7 @@ after_success:
   - docker build -t dobartos/multi-nginx ./nginx
   - docker build -t dobartos/multi-server ./server
   - docker build -t dobartos/multi-worker ./worker
-  - docker login --username "$DOCKER_ID" --password "$DOCKER_PASSWORD"
+  - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
   - docker push dobartos/multi-client
   - docker push dobartos/multi-nginx
   - docker push dobartos/multi-server
