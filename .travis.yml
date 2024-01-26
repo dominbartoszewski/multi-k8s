@@ -1,0 +1,28 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t dobartos/react-test -f Dockerfile.dev ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true dobartos/react-test npm test
+
+after_success:
+  - docker build -t dobartos/multi-client ./client
+  - docker build -t dobartos/multi-nginx ./nginx
+  - docker build -t dobartos/multi-server ./server
+  - docker build -t dobartos/multi-worker ./worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "frontend"
+  env: "Frontend-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-211125310561"
+  bucket_path:  "frontend"
+  on:
+    branch: master
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
