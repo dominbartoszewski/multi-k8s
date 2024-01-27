@@ -22,14 +22,14 @@ after_success:
   - docker push dobartos/multi-server
   - docker push dobartos/multi-worker
 
-#deploy:
-#  provider: elasticbeanstalk
-#  region: "eu-north-1"
-#  app: "frontend"
-#  env: "Frontend-env"
-#  bucket_name: "elasticbeanstalk-eu-north-1-211125310561"
-#  bucket_path:  "frontend"
-#  on:
-#    branch: master
-#  access_key_id: "$AWS_ACCESS_KEY"
-#  secret_access_key: "$AWS_SECRET_KEY"
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-north-1"
+  app: "multi-docker"
+  env: "Multi-docker-env"
+  bucket_name: "elasticbeanstalk-eu-north-1-211125310561"
+  bucket_path:  "multi-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
