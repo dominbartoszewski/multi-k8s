@@ -11,14 +11,13 @@ function App() {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>Kocham Agunie</p>
           <a
             className="App-link"
             href="https://reactjs.org"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Kocham Agunię
+            Kocham moją piękną żonę Agunię
           </a>
           <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
